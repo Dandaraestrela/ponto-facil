@@ -1,19 +1,26 @@
-import { ButtonHTMLAttributes, fowardRef } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import * as S from './Button.styles';
 
-const Button = ({ children, col, type }) => {
-  return (
-    <S.ButtonWrapper col={col} type={type}>
+const Button = React.forwardRef(
+  ({ children, col, type, onClick, ...props }, ref) => (
+    <S.ButtonWrapper
+      ref={ref}
+      col={col}
+      type={type}
+      onClick={onClick}
+      {...props}
+    >
       {children}
     </S.ButtonWrapper>
-  );
-};
+  ),
+);
 
-Button.PropTypes = {
+Button.propTypes = {
   children: PropTypes.node.isRequired,
   col: PropTypes.number,
   type: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 Button.defaultProps = {
