@@ -1,6 +1,7 @@
 import * as S from './Login.styles';
 
 import LogoLarge from 'assets/images/LogoLarge.svg';
+import { ReactComponent as Alarm } from 'assets/icons/alarm.svg';
 import { Button } from 'components';
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
         <Button col={6} type="primary" onClick={() => {}}>
           Login
         </Button>
+        <Alarm fill="yellow" stroke="yellow" />
       </S.StyledContent>
       <S.StyledBG />
     </S.StyledWrapper>
