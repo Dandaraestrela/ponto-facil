@@ -1,16 +1,17 @@
 import * as S from './NavItem.styles';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavItem = ({ icon, title, route }) => {
-  const [active, setActive] = useState(false);
+  const location = useLocation();
+  const [active] = useState(route === location.pathname);
 
   return (
     <Link to={route}>
-      <S.Wrapper>
-        <img src={icon} alt={'menu icon'} />
+      <S.Item active={active}>
+        {icon}
         <S.Title>{title}</S.Title>
-      </S.Wrapper>
+      </S.Item>
     </Link>
   );
 };

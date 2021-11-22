@@ -1,10 +1,22 @@
 import styled, { css } from 'styled-components';
 import theme from 'styles/theme';
 
-export const Wrapper = styled.div`
+export const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  p {
+    color: ${({ active, theme: { colors } }) =>
+      active ? colors.primary.default : colors.neutral.grey400};
+  }
+
+  svg {
+    path {
+      fill: ${({ active, theme: { colors } }) =>
+        active ? colors.primary.default : colors.neutral.grey400};
+    }
+  }
 `;
 
 export const Title = styled.p`
