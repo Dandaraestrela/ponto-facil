@@ -9,6 +9,7 @@
     "babel-eslint": "^10.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "lines-and-columns": "^2.0.2",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

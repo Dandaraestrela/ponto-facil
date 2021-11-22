@@ -1,16 +1,13 @@
 export const typography = {
   fontSize: {
-    xl: '36px',
-    lg: '24px',
-    md: '18px',
-    xm: '16px',
-    xs: '14px',
+    xl: '20px',
+    lg: '16px',
+    md: '14px',
+    sm: '12px',
   },
   fontWeight: {
-    light: '300',
-    regular: '400',
+    regular: 'normal',
     medium: '500',
-    semiBold: '600',
     bold: '700',
   },
 };
