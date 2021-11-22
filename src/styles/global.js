@@ -8,12 +8,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'DM Sans', sans-serif;
   }
-  
-
-  body {
- 
-    
-  }
 
   a {
     text-decoration: none;
