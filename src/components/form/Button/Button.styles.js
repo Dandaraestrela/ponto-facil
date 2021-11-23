@@ -10,6 +10,7 @@ export const ButtonWrapper = styled.button`
     border: none;
     border-radius: 20px;
     font-weight: ${typography.fontWeight.bold};
+    font-size: ${typography.fontSize.lg};
     cursor: pointer;
     background: none;
     ${type === 'primary'
