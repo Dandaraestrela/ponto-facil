@@ -4,13 +4,14 @@ import history from 'utils/history';
 
 import * as AuthTypes from '../types/authTypes';
 
-export function* loginUser({ payload: { nome, senha } }) {
+export function* loginUser({ payload: { email, senha } }) {
   try {
-    const { data } = yield call(api.post, '', { login: true, nome, senha });
+    const { data } = yield call(
+      api.get,
+      `?login=true&email=${email}&senha=${senha}`,
+    );
 
-    localStorage.setItem('nome', data.nome);
-
-    console.log(data);
+    localStorage.setItem('email', data.email);
 
     yield put({
       type: AuthTypes.LOGIN_USER_REQUEST_SUCCESS,
