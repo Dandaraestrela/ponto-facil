@@ -1,7 +1,7 @@
 import * as S from './Navbar.styles';
 import { Link } from 'react-router-dom';
 
-import NavItem from 'components/NavItem';
+import NavItem from 'components/structure/NavItem';
 
 import { ReactComponent as ProductLogo } from 'assets/logos/pflogo.svg';
 import { ReactComponent as Home } from 'assets/icons/home.svg';
