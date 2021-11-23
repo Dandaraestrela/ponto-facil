@@ -2,7 +2,10 @@ import * as AuthTypes from '../types/authTypes';
 
 const initialState = {
   user: {
+    id: localStorage.getItem('user_id') || null,
+    nome: localStorage.getItem('nome') || null,
     email: localStorage.getItem('email') || null,
+    flagAdmin: localStorage.getItem('flag_admin') || null,
   },
 };
 

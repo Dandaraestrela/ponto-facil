@@ -7,6 +7,7 @@ function* SAGAS() {
   yield all([
     takeLatest(AuthTypes.LOGIN_USER_REQUEST_START, AuthSagas.loginUser),
     takeLatest(AuthTypes.LOGOUT_USER_REDIRECT, AuthSagas.logoutUser),
+    takeLatest(AuthTypes.VALIDATE_USER_LOGIN, AuthSagas.validateLogin),
   ]);
 }
 
