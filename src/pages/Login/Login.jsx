@@ -1,18 +1,29 @@
 import * as S from './Login.styles';
 
 import LogoLarge from 'assets/images/LogoLarge.svg';
-import { ReactComponent as Alarm } from 'assets/icons/alarm.svg';
-import { Button } from 'components';
+import { Button, Input } from 'components';
 
 const Login = () => {
   return (
     <S.StyledWrapper>
       <S.StyledContent>
-        <img src={LogoLarge} width="40%" />
-        <Button col={6} type="primary" onClick={() => {}}>
+        <img src={LogoLarge} width="30%" />
+        <Input
+          label="E-mail"
+          col={5}
+          placeholder="Digite aqui o seu e-mail"
+          marginBottom={16}
+          marginTop={48}
+        />
+        <Input
+          label="Senha"
+          col={5}
+          placeholder="Digite aqui a sua senha"
+          marginBottom={48}
+        />
+        <Button col={5} type="primary" onClick={() => {}}>
           Login
         </Button>
-        <Alarm fill="yellow" stroke="yellow" />
       </S.StyledContent>
       <S.StyledBG />
     </S.StyledWrapper>

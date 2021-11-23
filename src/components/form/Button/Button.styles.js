@@ -1,15 +1,24 @@
 import styled, { css } from 'styled-components';
 
 export const ButtonWrapper = styled.button`
-  ${({ theme: { colors, typography }, col, type }) => css`
+  ${({
+    theme: { colors, typography },
+    col,
+    type,
+    marginTop,
+    marginBottom,
+  }) => css`
     display: flex;
     width: ${(100 / 16) * col}%;
     height: 40px;
     justify-content: center;
     align-items: center;
+    margin-top: ${marginTop}px;
+    margin-bottom: ${marginBottom}px;
     border: none;
     border-radius: 20px;
     font-weight: ${typography.fontWeight.bold};
+    font-size: ${typography.fontSize.lg};
     cursor: pointer;
     background: none;
     ${type === 'primary'
