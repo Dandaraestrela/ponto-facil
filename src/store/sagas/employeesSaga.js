@@ -22,16 +22,20 @@ export function* createEmployee({ payload: { newEmployee, successCallback } }) {
   try {
     const response = yield call(
       api.get,
-      `?cadastrarUsuario=true&nome=teste1&email=email@teste&endereco=av&dataNascimento=12/11&cargaHoraria=8&flagUsuarioAdmin=1&horaEntrada=1&horaSaida=11&idUsuarioMovTo=1`,
+      `?cadastrarUsuario=true&nome=teste6&email=email6@teste&endereco=av&dataNascimento=12/11&cargaHoraria=8&flagUsuarioAdmin=1&horaEntrada=1&horaSaida=11&idUsuarioMovTo=1`,
     );
-    console.log('response');
-    if (response) {
-      console.log(response);
+    if (response.data == 1) {
+      toast.success('Usuário criado!');
       yield put({
         type: EmployeesTypes.CREATE_EMPLOYEE_SUCCESS,
         payload: newEmployee,
       });
+
       yield call(successCallback);
+    } else if (response.data == 0) {
+      toast.error('Este e-mail já está cadastrado no sistema.');
+    } else {
+      toast.error('Ocorreu um erro, tente novamente.');
     }
   } catch (error) {}
 }
