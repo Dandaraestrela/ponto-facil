@@ -10,6 +10,7 @@ export const Container = styled.nav`
 
   padding: 0 60px;
 
+  background-color: ${({ theme: { colors } }) => colors.neutral.white};
   box-shadow: 0px 6px 8px -6px rgba(24, 39, 75, 0.12),
     0px 8px 16px -6px rgba(24, 39, 75, 0.08);
 `;
