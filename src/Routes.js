@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Login from './pages/Login';
 import Home from 'pages/Home';
+import Funcionarios from 'pages/Funcionarios';
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <RoutesWrapper>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/funcionarios" element={<Funcionarios />} />
         </RoutesWrapper>
       </Router>
       <ToastContainer />
