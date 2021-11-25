@@ -4,9 +4,7 @@ import { toast } from 'react-toastify';
 
 import * as EmployeesTypes from '../types/employeesTypes';
 
-export function* listEmployees({
-  payload: { employeeslist, successCallback },
-}) {
+export function* listEmployees({ payload: { successCallback } }) {
   try {
     const { data } = yield call(api.get, `?listaFuncionarios=true`);
     if (data) {
