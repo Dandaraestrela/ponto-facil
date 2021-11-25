@@ -46,8 +46,14 @@ export const StyledInput = styled.input`
   background: none;
   outline: none;
   border: none;
-  padding: 0px 8px 0px 12px;
+  padding: 0 8px;
   ::placeholder {
     color: ${({ theme: { colors } }) => colors.neutral.grey300};
   }
+`;
+
+export const InputRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;
