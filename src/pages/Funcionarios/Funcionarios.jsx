@@ -18,7 +18,7 @@ const Funcionarios = () => {
   const { employeesList } = useSelector((state) => state.employees);
 
   const successCallback = () => {
-    console.log('no success callback');
+    console.log('Sucesso');
   };
 
   return (
