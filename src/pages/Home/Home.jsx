@@ -27,7 +27,7 @@ const Home = () => {
     <S.Wrapper>
       <Navbar />
       <p>Olá, {nome}!</p>
-      <p>Você é um {flagAdmin ? 'administrador' : 'funcionário'}</p>
+      <p>Você é um {parseInt(flagAdmin) ? 'administrador' : 'funcionário'}</p>
     </S.Wrapper>
   );
 };
