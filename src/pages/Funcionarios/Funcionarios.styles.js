@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.neutral.grey100};
   overflow: auto;
@@ -27,4 +28,11 @@ export const Title = styled.h1`
     font-weight: ${typography.fontWeight.bold};
     padding-left: 12px;
   `};
+`;
+
+export const ButtonRow = styled.div`
+  display: flex;
+  width: 96%;
+  justify-content: flex-end;
+  margin-top: 16px;
 `;

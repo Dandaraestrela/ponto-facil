@@ -1,14 +1,22 @@
 import * as S from './UserFieldsModal.styles';
+import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
-import { Input, Button } from 'components';
+import { Input, Button, Checkbox } from 'components';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 
 const UserFieldsModal = ({ onClose }) => {
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (values) => {
-    console.log(values);
+    const newEmployee = values;
+
+    dispatch({
+      type: EmployeesTypes.CREATE_EMPLOYEE,
+      payload: { newEmployee, onClose },
+    });
   };
 
   return (
@@ -23,13 +31,14 @@ const UserFieldsModal = ({ onClose }) => {
 
         <S.InputRow>
           <Input label="Nome" col={8} {...register('nome')} />
-          <Input label="E-mail" col={8} {...register('email')} />
+          <Input label="E-mail" col={8} type="email" {...register('email')} />
         </S.InputRow>
         <S.InputRow>
           <Input label="Endereço" col={8} {...register('endereco')} />
           <Input
             label="Data de nascimento"
             col={8}
+            type="date"
             {...register('dataNascimento')}
           />
         </S.InputRow>
@@ -39,16 +48,21 @@ const UserFieldsModal = ({ onClose }) => {
               label="Carga Horária"
               suffix="Horas"
               col={5}
+              type="number"
               {...register('cargaHoraria')}
               style={{ textAlign: 'center' }}
             />
-            <Input type="checkbox" col={1} {...register('flagUsuarioAdmin')} />
+            <Checkbox
+              suffix="Usuário admin"
+              {...register('flagUsuarioAdmin')}
+            />
           </S.Row>
           <S.Row col={8}>
             <Input
               label="Horário de entrada"
               suffix="Horas"
               col={6}
+              type="time"
               {...register('horaEntrada')}
               style={{ textAlign: 'center' }}
             />
@@ -56,6 +70,7 @@ const UserFieldsModal = ({ onClose }) => {
               label="Horário de saída"
               suffix="Horas"
               col={6}
+              type="time"
               {...register('horaSaida')}
               style={{ textAlign: 'center' }}
             />

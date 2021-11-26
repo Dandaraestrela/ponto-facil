@@ -48,6 +48,7 @@ export const InputRow = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  align-items: center;
   gap: 16px;
 
   ${({ col }) => css`

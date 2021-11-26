@@ -17,7 +17,7 @@ const Input = React.forwardRef(
         <S.InputContainer hasError={hasError}>
           <S.StyledInput ref={ref} {...props} />
         </S.InputContainer>
-        {suffix && <S.StyledLabel>{suffix}</S.StyledLabel>}
+        {suffix && <S.Suffix>{suffix}</S.Suffix>}
       </S.InputRow>
     </S.StyledWrapper>
   ),
