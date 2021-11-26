@@ -21,11 +21,6 @@ const employeesReducer = (state = initialState, action) => {
   switch (action.type) {
     case EmployeesTypes.LIST_EMPLOYEES_SUCCESS:
       return { ...state, employeesList: action.payload };
-    case EmployeesTypes.CREATE_EMPLOYEE_SUCCESS:
-      return {
-        ...state,
-        employeesList: { ...employeesList, ...action.payload },
-      };
     default:
       return state;
   }

@@ -19,6 +19,14 @@ export const StyledLabel = styled.label`
   `};
 `;
 
+export const Suffix = styled.p`
+  ${({ theme: { colors, typography } }) => css`
+    font-weight: ${typography.fontWeight.bold};
+    font-size: ${typography.fontSize.md};
+    color: ${colors.neutral.black};
+  `};
+`;
+
 export const InputContainer = styled.div`
   ${({ theme: { colors } }) => css`
     display: flex;
@@ -46,8 +54,18 @@ export const StyledInput = styled.input`
   background: none;
   outline: none;
   border: none;
-  padding: 0px 8px 0px 12px;
+  padding: 0 8px;
   ::placeholder {
     color: ${({ theme: { colors } }) => colors.neutral.grey300};
   }
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    display: none;
+  }
+`;
+
+export const InputRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
 `;

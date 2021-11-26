@@ -9,6 +9,7 @@ import { Navbar } from 'components';
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { nome, flagAdmin } = useSelector((state) => state.auth.user);
 
   const redirectCallback = () => {
@@ -26,7 +27,7 @@ const Home = () => {
     <S.Wrapper>
       <Navbar />
       <p>Olá, {nome}!</p>
-      <p>Você é um {flagAdmin ? 'administrador' : 'funcionário'}</p>
+      <p>Você é um {parseInt(flagAdmin) ? 'administrador' : 'funcionário'}</p>
     </S.Wrapper>
   );
 };

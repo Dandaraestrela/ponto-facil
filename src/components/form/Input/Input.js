@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 import * as S from './Input.styles';
 
 const Input = React.forwardRef(
-  ({ label, col, hasError, marginTop, marginBottom, ...props }, ref) => (
+  (
+    { label, col, hasError, marginTop, marginBottom, suffix, ...props },
+    ref,
+  ) => (
     <S.StyledWrapper
       col={col}
       marginTop={marginTop}
       marginBottom={marginBottom}
     >
       <S.StyledLabel>{label}</S.StyledLabel>
-      <S.InputContainer hasError={hasError}>
-        <S.StyledInput ref={ref} {...props} />
-      </S.InputContainer>
+      <S.InputRow>
+        <S.InputContainer hasError={hasError}>
+          <S.StyledInput ref={ref} {...props} />
+        </S.InputContainer>
+        {suffix && <S.Suffix>{suffix}</S.Suffix>}
+      </S.InputRow>
     </S.StyledWrapper>
   ),
 );
@@ -23,6 +29,7 @@ Input.propTypes = {
   hasError: PropTypes.bool,
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
+  suffix: PropTypes.string,
 };
 
 Input.defaultProps = {
