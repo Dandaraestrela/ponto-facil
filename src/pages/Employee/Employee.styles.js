@@ -71,6 +71,6 @@ export const ReturnWrapper = styled.div`
 
 export const ReturnText = styled.p`
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   color: ${({ theme: { colors } }) => colors.primary.default}; ;
 `;
