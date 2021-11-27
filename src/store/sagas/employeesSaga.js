@@ -44,3 +44,29 @@ export function* createEmployee({ payload: { newEmployee, onClose } }) {
     }
   } catch (error) {}
 }
+
+export function* editEmployee({ payload: { editedData, onClose } }) {
+  if (editedData.dataNascimento.includes('/')) {
+    const dataNascimento = editedData.dataNascimento
+      .split('/')
+      .reverse()
+      .join('-');
+    editedData = { ...editedData, dataNascimento };
+  }
+
+  try {
+    const { data: success } = yield call(
+      api.get,
+      `?editarUsuario=true&idUsuario=${editedData.id}&nome=${editedData.nome}&email=${editedData.email}&endereco=${editedData.endereco}&dataNascimento=${editedData.dataNascimento}&cargaHoraria=${editedData.cargaHoraria}&horaEntrada=${editedData.horaEntrada}&horaSaida=${editedData.horaSaida}`,
+    );
+    if (success) {
+      toast.success('Informações editadas!');
+      yield put({
+        type: EmployeesTypes.LIST_EMPLOYEES,
+      });
+      yield call(onClose);
+    } else {
+      toast.error('Ocorreu um erro, tente novamente.');
+    }
+  } catch (error) {}
+}

@@ -14,6 +14,7 @@ function* SAGAS() {
     takeLatest(AuthTypes.CHANGE_USER_PASSWORD, AuthSagas.changeUserPassword),
     takeLatest(EmployeesTypes.LIST_EMPLOYEES, EmployeesSagas.listEmployees),
     takeLatest(EmployeesTypes.CREATE_EMPLOYEE, EmployeesSagas.createEmployee),
+    takeLatest(EmployeesTypes.EDIT_EMPLOYEE, EmployeesSagas.editEmployee),
   ]);
 }
 
