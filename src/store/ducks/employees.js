@@ -14,7 +14,7 @@ import * as EmployeesTypes from '../types/employeesTypes';
     dataHoraMovTo: 'string',*/
 
 const initialState = {
-  employeesList: [{}],
+  employeesList: [],
 };
 
 const employeesReducer = (state = initialState, action) => {

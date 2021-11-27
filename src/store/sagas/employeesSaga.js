@@ -8,7 +8,6 @@ export function* listEmployees() {
   try {
     const { data } = yield call(api.get, `?listaFuncionarios=true`);
     if (data) {
-      console.log(data);
       yield put({ type: EmployeesTypes.LIST_EMPLOYEES_SUCCESS, payload: data });
     }
   } catch (error) {}

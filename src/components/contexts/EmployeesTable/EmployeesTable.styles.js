@@ -32,6 +32,10 @@ export const TableHeaders = styled.th`
     `};
 `;
 
+export const TableActionsLabel = styled(TableHeaders)`
+  width: 120px;
+`;
+
 export const TableContent = styled.td`
   ${({ theme: { colors, typography } }) =>
     css`
@@ -55,4 +59,10 @@ export const TableText = styled.p`
       white-space: nowrap;
       text-overflow: ellipsis;
     `};
+`;
+
+export const ActionsRow = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
 `;

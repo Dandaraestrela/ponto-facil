@@ -19,6 +19,10 @@ const Funcionarios = () => {
 
   useEffect(() => {
     dispatch({
+      type: AuthTypes.VALIDATE_ADMIN_LOGIN,
+      payload: { redirectCallback },
+    });
+    dispatch({
       type: AuthTypes.VALIDATE_USER_LOGIN,
       payload: { redirectCallback },
     });
