@@ -10,8 +10,11 @@ function* SAGAS() {
     takeLatest(AuthTypes.LOGIN_USER_REQUEST_START, AuthSagas.loginUser),
     takeLatest(AuthTypes.LOGOUT_USER_REDIRECT, AuthSagas.logoutUser),
     takeLatest(AuthTypes.VALIDATE_USER_LOGIN, AuthSagas.validateLogin),
+    takeLatest(AuthTypes.VALIDATE_ADMIN_LOGIN, AuthSagas.validateAdmin),
+    takeLatest(AuthTypes.CHANGE_USER_PASSWORD, AuthSagas.changeUserPassword),
     takeLatest(EmployeesTypes.LIST_EMPLOYEES, EmployeesSagas.listEmployees),
     takeLatest(EmployeesTypes.CREATE_EMPLOYEE, EmployeesSagas.createEmployee),
+    takeLatest(EmployeesTypes.EDIT_EMPLOYEE, EmployeesSagas.editEmployee),
   ]);
 }
 

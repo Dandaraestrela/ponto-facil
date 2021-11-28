@@ -2,7 +2,7 @@ import * as S from './NavItem.styles';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const NavItem = ({ icon, title, route, action }) => {
+const NavItem = ({ icon, title, route = '', action }) => {
   const location = useLocation();
   const [active] = useState(route === location.pathname);
 

@@ -31,12 +31,44 @@ export function* loginUser({ payload: { email, senha, successCallback } }) {
   }
 }
 
+export function* changeUserPassword({ payload: { novaSenha } }) {
+  const {
+    user: { id },
+  } = yield select((state) => state.auth);
+
+  try {
+    const { data: success } = yield call(
+      api.get,
+      `?alterarSenha=true&idUsuario=${parseInt(id)}&novaSenha=${novaSenha}`,
+    );
+
+    if (success) {
+      toast.success('Senha alterada!');
+    } else {
+      toast.error('Erro ao alterar senha. Tente novamente');
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 export function* validateLogin({ payload: { redirectCallback } }) {
   const {
     user: { email },
   } = yield select((state) => state.auth);
 
   if (!email) {
+    yield call(redirectCallback);
+    return;
+  }
+}
+
+export function* validateAdmin({ payload: { redirectCallback } }) {
+  const {
+    user: { flagAdmin },
+  } = yield select((state) => state.auth);
+
+  if (!parseInt(flagAdmin)) {
     yield call(redirectCallback);
     return;
   }

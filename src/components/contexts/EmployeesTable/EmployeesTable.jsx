@@ -1,5 +1,9 @@
 import PropTypes from 'prop-types';
 import * as S from './EmployeesTable.styles';
+import { Link } from 'react-router-dom';
+
+import { ReactComponent as ViewIcon } from 'assets/icons/view.svg';
+import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg';
 
 const TableHeaders = {
   nome: 'Nome',
@@ -17,6 +21,7 @@ const EmployeesTable = ({ data, headers }) => {
           {Object.values(TableHeaders).map((header) => (
             <S.TableHeaders key={header}>{header}</S.TableHeaders>
           ))}
+          <S.TableActionsLabel key="Ações">Ações</S.TableActionsLabel>
         </S.TableRow>
       </thead>
       <tbody>
@@ -26,6 +31,18 @@ const EmployeesTable = ({ data, headers }) => {
               {headersKeys.map((info) => (
                 <S.TableContent key={info}>{dataGroup[info]}</S.TableContent>
               ))}
+              <S.TableContent>
+                <S.ActionsRow>
+                  <Link
+                    style={{ height: '30px' }}
+                    title="Ver perfil de funcionário"
+                    to={`/funcionario/${dataGroup.id}`}
+                  >
+                    <ViewIcon cursor="pointer" />
+                  </Link>
+                  <DeleteIcon cursor="pointer" />
+                </S.ActionsRow>
+              </S.TableContent>
             </S.TableRow>
           );
         })}
