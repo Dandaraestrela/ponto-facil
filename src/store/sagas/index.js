@@ -20,6 +20,7 @@ function* SAGAS() {
       EmployeesSagas.listEmployeeClock,
     ),
     takeLatest(EmployeesTypes.CLOCK_IN, EmployeesSagas.clockIn),
+    takeLatest(EmployeesTypes.USER_ENTRIES_TODAY, EmployeesSagas.UserEntries),
   ]);
 }
 
