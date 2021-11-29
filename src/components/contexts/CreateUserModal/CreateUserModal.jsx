@@ -1,4 +1,4 @@
-import * as S from './UserFieldsModal.styles';
+import * as S from './CreateUserModal.styles';
 import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { Input, Button, Checkbox } from 'components';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 
-const UserFieldsModal = ({ onClose }) => {
+const CreateUserModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
@@ -91,4 +91,4 @@ const UserFieldsModal = ({ onClose }) => {
     </S.Wrapper>
   );
 };
-export default UserFieldsModal;
+export default CreateUserModal;

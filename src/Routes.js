@@ -11,9 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import Login from './pages/Login';
 import Home from 'pages/Home';
-import Funcionarios from 'pages/Funcionarios';
+import Employees from 'pages/Employees';
 import Profile from 'pages/Profile';
-import Employee from 'pages/Employee';
+import EmployeeProfile from 'pages/EmployeeProfile';
 
 const Routes = () => {
   return (
@@ -22,9 +22,9 @@ const Routes = () => {
         <RoutesWrapper>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/funcionarios" element={<Funcionarios />} />
+          <Route path="/funcionarios" element={<Employees />} />
           <Route path="/perfil" element={<Profile />} />
-          <Route path="/funcionario/:id" element={<Employee />} />
+          <Route path="/funcionario/:id" element={<EmployeeProfile />} />
         </RoutesWrapper>
       </Router>
       <ToastContainer />

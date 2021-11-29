@@ -1,13 +1,13 @@
-import * as S from './Funcionarios.styles';
+import * as S from './Employees.styles';
 import * as AuthTypes from 'store/types/authTypes';
 import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import { Navbar, EmployeesTable, Button, UserFieldsModal } from 'components';
+import { Navbar, EmployeesTable, Button, CreateUserModal } from 'components';
 
-const Funcionarios = () => {
+const Employees = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -47,22 +47,14 @@ const Funcionarios = () => {
         </S.ButtonRow>
         <S.TableWrapper>
           <S.Title>Lista de funcionários ativos</S.Title>
-          <EmployeesTable
-            data={employeesList}
-            headers={{
-              nome: 'Nome',
-              email: 'E-mail',
-              horaEntrada: 'Hora entrada',
-              horaSaida: 'Hora saída',
-            }}
-          />
+          <EmployeesTable data={employeesList} headers="Employees" />
         </S.TableWrapper>
       </S.Wrapper>
       {createUserModal && (
-        <UserFieldsModal onClose={() => setCreateUserModal(false)} />
+        <CreateUserModal onClose={() => setCreateUserModal(false)} />
       )}
     </>
   );
 };
 
-export default Funcionarios;
+export default Employees;

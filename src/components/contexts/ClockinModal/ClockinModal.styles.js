@@ -30,16 +30,17 @@ export const Title = styled.h1`
 `;
 
 export const Paragraph = styled.p`
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 16px;
   line-height: 24px;
   margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 export const TitleRow = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
 `;
 
 export const ButtonsRow = styled.div`

@@ -1,48 +1,50 @@
-import PropTypes from 'prop-types';
-import * as S from './EmployeesTable.styles';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import * as S from './EmployeesTable.styles';
+
+import { EmployeesHeaders, ClockInHeaders } from './EmployeesTable.utils';
 
 import { ReactComponent as ViewIcon } from 'assets/icons/view.svg';
 import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg';
 
-const TableHeaders = {
-  nome: 'Nome',
-  email: 'E-mail',
-  horaEntrada: 'Hora entrada',
-  horaSaida: 'Hora saída',
-};
-
 const EmployeesTable = ({ data, headers }) => {
-  const headersKeys = Object.keys(headers);
+  const tableHeaders =
+    headers === 'Employees' ? EmployeesHeaders : ClockInHeaders;
+
   return (
     <S.Table>
       <thead>
         <S.TableRow>
-          {Object.values(TableHeaders).map((header) => (
+          {Object.values(tableHeaders).map((header) => (
             <S.TableHeaders key={header}>{header}</S.TableHeaders>
           ))}
-          <S.TableActionsLabel key="Ações">Ações</S.TableActionsLabel>
+          {headers === 'Employees' && (
+            <S.TableHeaders key="Ações">Ações</S.TableHeaders>
+          )}
         </S.TableRow>
       </thead>
       <tbody>
         {data.map((dataGroup, index) => {
           return (
             <S.TableRow key={index}>
-              {headersKeys.map((info) => (
+              {Object.keys(tableHeaders).map((info) => (
                 <S.TableContent key={info}>{dataGroup[info]}</S.TableContent>
               ))}
-              <S.TableContent>
-                <S.ActionsRow>
-                  <Link
-                    style={{ height: '30px' }}
-                    title="Ver perfil de funcionário"
-                    to={`/funcionario/${dataGroup.id}`}
-                  >
-                    <ViewIcon cursor="pointer" />
-                  </Link>
-                  <DeleteIcon cursor="pointer" />
-                </S.ActionsRow>
-              </S.TableContent>
+              {headers === 'Employees' && (
+                <S.TableContent>
+                  <S.ActionsRow>
+                    <Link
+                      style={{ height: '30px' }}
+                      title="Ver perfil de funcionário"
+                      to={`/funcionario/${dataGroup.id}`}
+                    >
+                      <ViewIcon cursor="pointer" />
+                    </Link>
+                    <DeleteIcon cursor="pointer" />
+                  </S.ActionsRow>
+                </S.TableContent>
+              )}
             </S.TableRow>
           );
         })}
@@ -68,7 +70,7 @@ EmployeesTable.propTypes = {
       dataHoraMovTo: PropTypes.string,
     }).isRequired,
   ),
-  headers: PropTypes.objectOf(PropTypes.string).isRequired,
+  headers: PropTypes.oneOf(['Employees', 'ClockIn']),
 };
 
 export default EmployeesTable;

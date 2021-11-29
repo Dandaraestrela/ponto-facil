@@ -1,4 +1,4 @@
-import * as S from './Employee.styles';
+import * as S from './EmployeeProfile.styles';
 import * as AuthTypes from 'store/types/authTypes';
 import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useEffect, useState } from 'react';
@@ -6,17 +6,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSingleUser } from 'utils/userGetter';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Navbar, TimeFieldsModal } from 'components';
+import { Navbar, TimeFieldsModal, EmployeesTable } from 'components';
 
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
 import { ReactComponent as ReturnIcon } from 'assets/icons/return.svg';
 
-const Profile = () => {
+const EmployeeProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const { employeesList } = useSelector((state) => state.employees);
+  const employeeID = id;
+  const { employeesList, employeeClocks } = useSelector(
+    (state) => state.employees,
+  );
 
   const [selectedUser, setSelectedUser] = useState({});
   const [timeFieldsModal, setTimeFieldsModal] = useState(false);
@@ -33,12 +36,20 @@ const Profile = () => {
     dispatch({
       type: EmployeesTypes.LIST_EMPLOYEES,
     });
+    dispatch({
+      type: EmployeesTypes.EMPLOYEE_CLOCK_LIST,
+      payload: { employeeID },
+    });
   }, []);
 
   useEffect(() => {
     if (employeesList.length) {
       setSelectedUser(getSingleUser(id, employeesList));
     }
+    dispatch({
+      type: EmployeesTypes.EMPLOYEE_CLOCK_LIST,
+      payload: { employeeID },
+    });
   }, [employeesList]);
 
   return (
@@ -104,6 +115,7 @@ const Profile = () => {
                 </S.UserData>
               </S.UserDataContainer>
             </S.UserDataWrapper>
+            <EmployeesTable data={employeeClocks} headers="ClockIn" />
           </S.ContentWrapper>
         )}
       </S.Wrapper>
@@ -117,4 +129,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default EmployeeProfile;
