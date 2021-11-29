@@ -73,6 +73,24 @@ export function* editEmployee({ payload: { editedData, onClose } }) {
   } catch (error) {}
 }
 
+export function* deleteEmployee({ payload: { employeeId, onClose } }) {
+  try {
+    const { data: success } = yield call(
+      api.get,
+      `?deletarUsuario=true&idUsuario=${employeeId}`,
+    );
+    if (success) {
+      toast.success('Usuário apagado!');
+      yield put({
+        type: EmployeesTypes.LIST_EMPLOYEES,
+      });
+      yield call(onClose);
+    } else {
+      toast.error('Ocorreu um erro, tente novamente.');
+    }
+  } catch (error) {}
+}
+
 export function* listEmployeeClock({ payload: { employeeID } }) {
   try {
     const { data } = yield call(

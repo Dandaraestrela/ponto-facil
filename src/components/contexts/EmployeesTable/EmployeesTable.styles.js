@@ -62,6 +62,6 @@ export const TableText = styled.p`
 
 export const ActionsRow = styled.div`
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
 `;
