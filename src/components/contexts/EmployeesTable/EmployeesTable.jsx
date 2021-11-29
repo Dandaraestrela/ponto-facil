@@ -4,14 +4,22 @@ import PropTypes from 'prop-types';
 import * as S from './EmployeesTable.styles';
 
 import { Button } from 'components';
-import { EmployeesHeaders, ClockInHeaders } from './EmployeesTable.utils';
+import {
+  EmployeesHeaders,
+  ClockInHeaders,
+  UserEntries,
+} from './EmployeesTable.utils';
 
 import { ReactComponent as ViewIcon } from 'assets/icons/view.svg';
 import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg';
 
 const EmployeesTable = ({ data, headers, handleDelete }) => {
   const tableHeaders =
-    headers === 'Employees' ? EmployeesHeaders : ClockInHeaders;
+    headers === 'Employees'
+      ? EmployeesHeaders
+      : headers === 'UserEntries'
+      ? UserEntries
+      : ClockInHeaders;
 
   return (
     <S.Table>
@@ -77,7 +85,7 @@ EmployeesTable.propTypes = {
       dataHoraMovTo: PropTypes.string,
     }).isRequired,
   ),
-  headers: PropTypes.oneOf(['Employees', 'ClockIn']),
+  headers: PropTypes.oneOf(['Employees', 'ClockIn', 'UserEntries']),
 };
 
 export default EmployeesTable;

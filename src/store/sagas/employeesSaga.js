@@ -122,3 +122,17 @@ export function* clockIn({ payload: { employeeIMG } }) {
     }
   } catch (error) {}
 }
+
+export function* UserEntries() {
+  try {
+    const response = yield call(api.get, `?usuariosEntradahoje=true`);
+    if (response.data) {
+      yield put({
+        type: EmployeesTypes.USER_ENTRIES_TODAY_SUCCESS,
+        payload: response.data,
+      });
+    } else {
+      toast.warn('Nenhum funcionário deu entrada');
+    }
+  } catch (error) {}
+}
