@@ -3,6 +3,7 @@ import Input from './form/Input/Input';
 import Checkbox from './form/Checkbox/Checkbox';
 import Navbar from './structure/Navbar/Navbar';
 import CreateUserModal from './contexts/CreateUserModal/CreateUserModal';
+import DeleteUserModal from './contexts/DeleteUserModal/DeleteUserModal';
 import PersonalFieldsModal from './contexts/PersonalFieldsModal/PersonalFieldsModal';
 import TimeFieldsModal from './contexts/TimeFieldsModal/TimeFieldsModal';
 import EmployeesTable from './contexts/EmployeesTable/EmployeesTable';
@@ -17,6 +18,7 @@ export {
   Navbar,
   EmployeesTable,
   CreateUserModal,
+  DeleteUserModal,
   PersonalFieldsModal,
   TimeFieldsModal,
   ClockinModal,

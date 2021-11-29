@@ -5,17 +5,42 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 
-import { Navbar, EmployeesTable, Button, CreateUserModal } from 'components';
+import {
+  Navbar,
+  EmployeesTable,
+  Button,
+  CreateUserModal,
+  DeleteUserModal,
+} from 'components';
 
 const Employees = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const {
+    user: { id },
+  } = useSelector((state) => state.auth);
+  const { employeesList } = useSelector((state) => state.employees);
+
+  const [selectedUser, setSelectedUser] = useState({});
   const [createUserModal, setCreateUserModal] = useState(false);
+  const [deleteUserModal, setDeleteUserModal] = useState(false);
+  const [filteredEmployeesList, setFilteredEmployeesList] = useState([]);
+
+  const handleDelete = (userData) => {
+    setSelectedUser(userData);
+    setDeleteUserModal(true);
+  };
 
   const redirectCallback = () => {
     navigate('/login', { replace: true });
   };
+
+  useEffect(() => {
+    setFilteredEmployeesList(
+      employeesList.filter((employee) => employee.id !== id),
+    );
+  }, [employeesList]);
 
   useEffect(() => {
     dispatch({
@@ -34,8 +59,6 @@ const Employees = () => {
     });
   }, []);
 
-  const { employeesList } = useSelector((state) => state.employees);
-
   return (
     <>
       <S.Wrapper>
@@ -47,11 +70,21 @@ const Employees = () => {
         </S.ButtonRow>
         <S.TableWrapper>
           <S.Title>Lista de funcionários ativos</S.Title>
-          <EmployeesTable data={employeesList} headers="Employees" />
+          <EmployeesTable
+            data={filteredEmployeesList}
+            headers="Employees"
+            handleDelete={handleDelete}
+          />
         </S.TableWrapper>
       </S.Wrapper>
       {createUserModal && (
         <CreateUserModal onClose={() => setCreateUserModal(false)} />
+      )}
+      {deleteUserModal && (
+        <DeleteUserModal
+          onClose={() => setDeleteUserModal(false)}
+          userData={selectedUser}
+        />
       )}
     </>
   );

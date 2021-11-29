@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as S from './EmployeesTable.styles';
 
+import { Button } from 'components';
 import {
   EmployeesHeaders,
   ClockInHeaders,
@@ -12,7 +13,7 @@ import {
 import { ReactComponent as ViewIcon } from 'assets/icons/view.svg';
 import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg';
 
-const EmployeesTable = ({ data, headers }) => {
+const EmployeesTable = ({ data, headers, handleDelete }) => {
   const tableHeaders =
     headers === 'Employees'
       ? EmployeesHeaders
@@ -49,7 +50,13 @@ const EmployeesTable = ({ data, headers }) => {
                     >
                       <ViewIcon cursor="pointer" />
                     </Link>
-                    <DeleteIcon cursor="pointer" />
+                    <Button
+                      type="tertiary"
+                      col={6}
+                      onClick={() => handleDelete(dataGroup)}
+                    >
+                      <DeleteIcon />
+                    </Button>
                   </S.ActionsRow>
                 </S.TableContent>
               )}
