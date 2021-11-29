@@ -9,6 +9,8 @@ export function* listEmployees() {
     const { data } = yield call(api.get, `?listaFuncionarios=true`);
     if (data) {
       yield put({ type: EmployeesTypes.LIST_EMPLOYEES_SUCCESS, payload: data });
+    } else {
+      toast.error('Não foi possível carregar os dados.');
     }
   } catch (error) {}
 }
@@ -67,6 +69,38 @@ export function* editEmployee({ payload: { editedData, onClose } }) {
       yield call(onClose);
     } else {
       toast.error('Ocorreu um erro, tente novamente.');
+    }
+  } catch (error) {}
+}
+
+export function* listEmployeeClock({ payload: { employeeID } }) {
+  try {
+    const { data } = yield call(
+      api.get,
+      `?resumoPonto=true&idUsuario=${employeeID}`,
+    );
+    if (data) {
+      yield put({
+        type: EmployeesTypes.EMPLOYEE_CLOCK_LIST_SUCCESS,
+        payload: data,
+      });
+    } else {
+      toast.error('Não foi possível carregar os dados.');
+    }
+  } catch (error) {}
+}
+
+export function* clockIn({ payload: { employeeIMG } }) {
+  try {
+    const response = yield call(
+      api.get,
+      `?registrarPonto=true&imagem=${employeeIMG}`,
+    );
+
+    if (response.data == true) {
+      toast.success('Bateu ponto!');
+    } else {
+      toast.error('Não foi possível bater ponto.');
     }
   } catch (error) {}
 }
