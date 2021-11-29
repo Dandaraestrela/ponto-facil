@@ -16,6 +16,7 @@ import * as EmployeesTypes from '../types/employeesTypes';
 const initialState = {
   employeesList: [],
   employeeClocks: [],
+  userEntries: [],
 };
 
 const employeesReducer = (state = initialState, action) => {
@@ -24,6 +25,8 @@ const employeesReducer = (state = initialState, action) => {
       return { ...state, employeesList: action.payload };
     case EmployeesTypes.EMPLOYEE_CLOCK_LIST_SUCCESS:
       return { ...state, employeeClocks: action.payload };
+    case EmployeesTypes.USER_ENTRIES_TODAY_SUCCESS:
+      return { ...state, userEntries: action.payload };
     default:
       return state;
   }
