@@ -29,11 +29,10 @@ export const TableHeaders = styled.th`
       line-height: 24px;
       border-bottom: 1px solid ${colors.neutral.grey200};
       color: ${colors.neutral.grey400};
+      :last-of-type {
+        width: 120px;
+      }
     `};
-`;
-
-export const TableActionsLabel = styled(TableHeaders)`
-  width: 120px;
 `;
 
 export const TableContent = styled.td`

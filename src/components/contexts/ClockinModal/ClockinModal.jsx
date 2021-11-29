@@ -1,24 +1,41 @@
-import * as S from './ClockinModal.styles';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import moment from 'moment';
+import * as S from './ClockinModal.styles';
 
-import { Button, WebcamLayout } from 'components';
+import { Button, WebcamLayout, UploadButton } from 'components';
+import * as employeesTypes from 'store/types/employeesTypes';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
-import { ReactComponent as Upload } from 'assets/images/image-upload.svg';
+import { ReactComponent as Camera } from 'assets/icons/camera.svg';
+import { ReactComponent as Check } from 'assets/icons/check.svg';
 
 const ClockinModal = ({ onClose }) => {
+  moment().locale('pt-br');
   const dispatch = useDispatch();
   const [imgSrc, setImgSrc] = useState(null);
 
   const [webcamLayout, setWebcamLayout] = useState(false);
 
-  const dispatchClockin = () => {
+  const [date, setDate] = useState(new Date());
+  //console.log(moment().locale('pt-br').format('LTS'));
+  function refreshClock() {
+    setDate(new Date());
+  }
+  useEffect(() => {
+    const timerId = setInterval(refreshClock, 1000);
+    return function cleanup() {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  const dispatchClockin = useCallback(() => {
     console.log('bateu');
-    // dispatch({
-    //   type: EmployeesTypes.CREATE_EMPLOYEE,
-    //   payload: { newEmployee, onClose },
-    // });
-  };
+    const employeeIMG = imgSrc;
+    dispatch({
+      type: employeesTypes.CLOCK_IN,
+      payload: { employeeIMG },
+    });
+  }, [imgSrc]);
 
   return (
     <>
@@ -30,13 +47,26 @@ const ClockinModal = ({ onClose }) => {
               <Close />
             </S.CloseItem>
           </S.TitleRow>
-          <Upload cursor="pointer" onClick={() => setWebcamLayout(true)} />
-          {imgSrc && <p>Upload concluído</p>}
+          <S.Paragraph>
+            <strong>Horário atual: </strong>
+            {date.toLocaleTimeString()}
+          </S.Paragraph>
+          {imgSrc ? (
+            <UploadButton type="tertiary" uploaded>
+              <Check />
+              Upload concluído
+            </UploadButton>
+          ) : (
+            <UploadButton type="tertiary" onClick={() => setWebcamLayout(true)}>
+              <Camera />
+              Fazer Upload
+            </UploadButton>
+          )}
           <S.ButtonsRow>
-            <Button type="tertiary" col={6} onClick={onClose}>
+            <Button type="tertiary" col={8} onClick={onClose}>
               Cancelar
             </Button>
-            <Button col={6} onClick={dispatchClockin}>
+            <Button col={8} onClick={dispatchClockin}>
               Bater ponto
             </Button>
           </S.ButtonsRow>

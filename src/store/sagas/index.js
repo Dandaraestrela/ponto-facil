@@ -15,6 +15,11 @@ function* SAGAS() {
     takeLatest(EmployeesTypes.LIST_EMPLOYEES, EmployeesSagas.listEmployees),
     takeLatest(EmployeesTypes.CREATE_EMPLOYEE, EmployeesSagas.createEmployee),
     takeLatest(EmployeesTypes.EDIT_EMPLOYEE, EmployeesSagas.editEmployee),
+    takeLatest(
+      EmployeesTypes.EMPLOYEE_CLOCK_LIST,
+      EmployeesSagas.listEmployeeClock,
+    ),
+    takeLatest(EmployeesTypes.CLOCK_IN, EmployeesSagas.clockIn),
   ]);
 }
 
