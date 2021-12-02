@@ -144,7 +144,7 @@ export function* employeePunctuality({ payload: { employeeId } }) {
         payload: punctuality,
       });
     } else {
-      toast.error('Não foi obter pontualidade média.');
+      toast.error('Não foi possível obter pontualidade.');
     }
   } catch (error) {}
 }
