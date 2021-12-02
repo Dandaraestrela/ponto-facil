@@ -108,15 +108,21 @@ export function* listEmployeeClock({ payload: { employeeID } }) {
   } catch (error) {}
 }
 
-export function* clockIn({ payload: { employeeIMG } }) {
+export function* clockIn({ payload: { employeeIMG, onSuccess } }) {
+  const {
+    user: { id },
+  } = yield select((state) => state.auth);
+
   try {
     const response = yield call(
       api.get,
-      `?registrarPonto=true&imagem=${employeeIMG}`,
+      `?registrarPonto=true&idUsuario=${id}&imagem=${employeeIMG}`,
     );
 
     if (response.data == true) {
       toast.success('Bateu ponto!');
+      yield put({ type: EmployeesTypes.USER_ENTRIES_TODAY });
+      onSuccess();
     } else {
       toast.error('Não foi possível bater ponto.');
     }
@@ -125,14 +131,14 @@ export function* clockIn({ payload: { employeeIMG } }) {
 
 export function* UserEntries() {
   try {
-    const response = yield call(api.get, `?usuariosEntradahoje=true`);
+    const response = yield call(api.get, `?usuariosEntradaHoje=true`);
     if (response.data) {
       yield put({
         type: EmployeesTypes.USER_ENTRIES_TODAY_SUCCESS,
         payload: response.data,
       });
     } else {
-      toast.warn('Nenhum funcionário deu entrada');
+      //toast.warn('Nenhum funcionário deu entrada');
     }
   } catch (error) {}
 }

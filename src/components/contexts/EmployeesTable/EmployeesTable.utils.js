@@ -18,5 +18,5 @@ export const ClockInHeaders = {
 
 export const UserEntries = {
   nomeUsuario: 'Nome do Funcionário',
-  horaEntrada: 'Horário de entrada',
+  entrada1: 'Horário de entrada',
 };

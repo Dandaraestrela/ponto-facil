@@ -29,11 +29,10 @@ const ClockinModal = ({ onClose }) => {
   }, []);
 
   const dispatchClockin = useCallback(() => {
-    console.log('bateu');
     const employeeIMG = imgSrc;
     dispatch({
       type: employeesTypes.CLOCK_IN,
-      payload: { employeeIMG },
+      payload: { employeeIMG, onSuccess: onClose },
     });
   }, [imgSrc]);
 
