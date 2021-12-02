@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "babel-eslint": "^10.1.0",
+    "browser-image-compression": "^1.0.17",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "lines-and-columns": "^2.0.2",
