@@ -22,7 +22,9 @@ const Profile = () => {
   const { register, handleSubmit } = useForm();
 
   const { id, flagAdmin } = useSelector((state) => state.auth.user);
-  const { employeesList } = useSelector((state) => state.employees);
+  const { employeesList, employeePunctuality } = useSelector(
+    (state) => state.employees,
+  );
 
   const [loggedUser, setLoggedUser] = useState({});
   const [personalFieldsModal, setPersonalFieldsModal] = useState(false);
@@ -41,6 +43,13 @@ const Profile = () => {
       type: EmployeesTypes.LIST_EMPLOYEES,
     });
   }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: EmployeesTypes.EMPLOYEE_PUNCTUALITY,
+      payload: { employeeId: id },
+    });
+  }, [id]);
 
   useEffect(() => {
     if (employeesList.length) {
@@ -121,7 +130,7 @@ const Profile = () => {
                   </p>
                   <p>
                     <strong>Pontualidade geral: </strong>
-                    --%
+                    {Math.round(employeePunctuality)}%
                   </p>
                 </S.UserData>
               </S.UserDataContainer>
