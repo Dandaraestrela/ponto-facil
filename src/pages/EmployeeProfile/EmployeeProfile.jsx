@@ -17,7 +17,7 @@ const EmployeeProfile = () => {
 
   const { id } = useParams();
   const employeeID = id;
-  const { employeesList, employeeClocks } = useSelector(
+  const { employeesList, employeeClocks, employeePunctuality } = useSelector(
     (state) => state.employees,
   );
 
@@ -39,6 +39,10 @@ const EmployeeProfile = () => {
     dispatch({
       type: EmployeesTypes.EMPLOYEE_CLOCK_LIST,
       payload: { employeeID },
+    });
+    dispatch({
+      type: EmployeesTypes.EMPLOYEE_PUNCTUALITY,
+      payload: { employeeId: id },
     });
   }, []);
 
@@ -110,7 +114,7 @@ const EmployeeProfile = () => {
                   </p>
                   <p>
                     <strong>Pontualidade geral: </strong>
-                    --%
+                    {Math.round(employeePunctuality)}%
                   </p>
                 </S.UserData>
               </S.UserDataContainer>

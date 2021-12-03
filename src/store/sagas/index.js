@@ -16,12 +16,16 @@ function* SAGAS() {
     takeLatest(EmployeesTypes.CREATE_EMPLOYEE, EmployeesSagas.createEmployee),
     takeLatest(EmployeesTypes.EDIT_EMPLOYEE, EmployeesSagas.editEmployee),
     takeLatest(EmployeesTypes.DELETE_EMPLOYEE, EmployeesSagas.deleteEmployee),
+    takeLatest(EmployeesTypes.CLOCK_IN, EmployeesSagas.clockIn),
+    takeLatest(EmployeesTypes.USER_ENTRIES_TODAY, EmployeesSagas.UserEntries),
     takeLatest(
       EmployeesTypes.EMPLOYEE_CLOCK_LIST,
       EmployeesSagas.listEmployeeClock,
     ),
-    takeLatest(EmployeesTypes.CLOCK_IN, EmployeesSagas.clockIn),
-    takeLatest(EmployeesTypes.USER_ENTRIES_TODAY, EmployeesSagas.UserEntries),
+    takeLatest(
+      EmployeesTypes.EMPLOYEE_PUNCTUALITY,
+      EmployeesSagas.employeePunctuality,
+    ),
   ]);
 }
 

@@ -97,7 +97,8 @@ export function* listEmployeeClock({ payload: { employeeID } }) {
       api.get,
       `?resumoPonto=true&idUsuario=${employeeID}`,
     );
-    if (data) {
+
+    if (Array.isArray(data)) {
       yield put({
         type: EmployeesTypes.EMPLOYEE_CLOCK_LIST_SUCCESS,
         payload: data,
@@ -125,6 +126,25 @@ export function* clockIn({ payload: { employeeIMG, onSuccess } }) {
       onSuccess();
     } else {
       toast.error('Não foi possível bater ponto.');
+    }
+  } catch (error) {}
+}
+
+export function* employeePunctuality({ payload: { employeeId } }) {
+  try {
+    const { data } = yield call(
+      api.get,
+      `?percentualPontualidade=true&idUsuario=${employeeId}`,
+    );
+
+    if (data.length) {
+      const punctuality = 100 - data[0].percentualPontualidade;
+      yield put({
+        type: EmployeesTypes.EMPLOYEE_PUNCTUALITY_SUCCESS,
+        payload: punctuality,
+      });
+    } else {
+      toast.error('Não foi possível obter pontualidade.');
     }
   } catch (error) {}
 }
