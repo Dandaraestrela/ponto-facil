@@ -1,14 +1,30 @@
-import * as S from './PersonalFieldsModal.styles';
-import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
+import * as S from './PersonalFieldsModal.styles';
+import * as EmployeesTypes from 'store/types/employeesTypes';
 
 import { Input, Button } from 'components';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 
+export const schema = yup
+  .object({
+    nome: yup.string().required('Campo obrigatório.'),
+    email: yup.string().required('Campo obrigatório.'),
+    endereco: yup.string().required('Campo obrigatório.'),
+    dataNascimento: yup.string().required('Campo obrigatório.'),
+  })
+  .required();
+
 const PersonalFieldsModal = ({ onClose, userData }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (values) => {
     const { nome, email, endereco, dataNascimento } = values;
@@ -36,6 +52,7 @@ const PersonalFieldsModal = ({ onClose, userData }) => {
             col={8}
             defaultValue={userData.nome}
             {...register('nome')}
+            error={errors.nome}
           />
           <Input
             label="E-mail"
@@ -43,6 +60,7 @@ const PersonalFieldsModal = ({ onClose, userData }) => {
             type="email"
             defaultValue={userData.email}
             {...register('email')}
+            error={errors.email}
           />
         </S.InputRow>
         <S.InputRow>
@@ -51,6 +69,7 @@ const PersonalFieldsModal = ({ onClose, userData }) => {
             defaultValue={userData.endereco}
             col={8}
             {...register('endereco')}
+            error={errors.endereco}
           />
           <Input
             label="Data de nascimento"
@@ -61,10 +80,11 @@ const PersonalFieldsModal = ({ onClose, userData }) => {
               .reverse()
               .join('-')}
             {...register('dataNascimento')}
+            error={errors.dataNascimento}
           />
         </S.InputRow>
         <S.ButtonsRow>
-          <Button type="tertiary" col={4} onClick={onClose}>
+          <Button buttonType="tertiary" col={4} onClick={onClose}>
             Cancelar
           </Button>
           <Button col={4} onClick={handleSubmit(onSubmit)}>

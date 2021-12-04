@@ -23,7 +23,7 @@ const ClocksTable = ({ data }) => {
               {dataGroup[info]}
               {dataGroup[info] !== '-' && (
                 <Button
-                  type="tertiary"
+                  buttonType="tertiary"
                   col={3}
                   onClick={() => {
                     setSelectedImg(dataGroup['imagens']['entrada1']);
@@ -43,7 +43,7 @@ const ClocksTable = ({ data }) => {
               {dataGroup[info]}
               {dataGroup[info] !== '-' && (
                 <Button
-                  type="tertiary"
+                  buttonType="tertiary"
                   col={3}
                   onClick={() => {
                     setSelectedImg(dataGroup['imagens']['saida1']);
@@ -63,7 +63,7 @@ const ClocksTable = ({ data }) => {
               {dataGroup[info]}
               {dataGroup[info] !== '-' && (
                 <Button
-                  type="tertiary"
+                  buttonType="tertiary"
                   col={3}
                   onClick={() => {
                     setSelectedImg(dataGroup['imagens']['entrada2']);
@@ -83,7 +83,7 @@ const ClocksTable = ({ data }) => {
               {dataGroup[info]}
               {dataGroup[info] !== '-' && (
                 <Button
-                  type="tertiary"
+                  buttonType="tertiary"
                   col={3}
                   onClick={() => {
                     setSelectedImg(dataGroup['imagens']['saida2']);

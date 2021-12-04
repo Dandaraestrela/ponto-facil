@@ -4,7 +4,7 @@ export const ButtonWrapper = styled.button`
   ${({
     theme: { colors, typography },
     col,
-    type,
+    buttonType,
     marginTop,
     marginBottom,
   }) => css`
@@ -21,7 +21,7 @@ export const ButtonWrapper = styled.button`
     font-size: ${typography.fontSize.lg};
     cursor: pointer;
     background: none;
-    ${type === 'primary'
+    ${buttonType === 'primary'
       ? css`
           background-color: ${colors.primary.default};
           color: ${colors.neutral.white};
@@ -29,7 +29,7 @@ export const ButtonWrapper = styled.button`
             background-color: ${colors.primary.light};
           }
         `
-      : type === 'secondary'
+      : buttonType === 'secondary'
       ? css`
           border: 1px solid ${colors.primary.light};
           color: ${colors.primary.light};

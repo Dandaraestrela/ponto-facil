@@ -64,7 +64,11 @@ const WebcamLayout = ({ onClose, setUploadedImage }) => {
         <S.ButtonsRow>
           {imgSrc ? (
             <>
-              <Button onClick={() => setImgSrc(null)} col={4} type="secondary">
+              <Button
+                onClick={() => setImgSrc(null)}
+                col={4}
+                buttonType="secondary"
+              >
                 Tirar denovo
               </Button>
               <Button

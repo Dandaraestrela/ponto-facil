@@ -1,14 +1,31 @@
-import * as S from './TimeFieldsModal.styles';
-import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 
+import * as S from './TimeFieldsModal.styles';
+import * as EmployeesTypes from 'store/types/employeesTypes';
 import { Input, Button } from 'components';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 
+export const schema = yup
+  .object({
+    cargaHoraria: yup
+      .number()
+      .typeError('Edição inválido.')
+      .required('Campo obrigatório.'),
+    horaEntrada: yup.string().required('Campo obrigatório.'),
+    horaSaida: yup.string().required('Campo obrigatório.'),
+  })
+  .required();
+
 const TimeFieldsModal = ({ userData, onClose }) => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (values) => {
     const { cargaHoraria, horaEntrada, horaSaida } = values;
@@ -39,6 +56,7 @@ const TimeFieldsModal = ({ userData, onClose }) => {
               defaultValue={userData.cargaHoraria}
               {...register('cargaHoraria')}
               style={{ textAlign: 'center' }}
+              error={errors.cargaHoraria}
             />
             <Input
               label="Horário de entrada"
@@ -48,6 +66,7 @@ const TimeFieldsModal = ({ userData, onClose }) => {
               defaultValue={userData.horaEntrada}
               {...register('horaEntrada')}
               style={{ textAlign: 'center' }}
+              error={errors.horaEntrada}
             />
             <Input
               label="Horário de saída"
@@ -57,11 +76,12 @@ const TimeFieldsModal = ({ userData, onClose }) => {
               defaultValue={userData.horaSaida}
               {...register('horaSaida')}
               style={{ textAlign: 'center' }}
+              error={errors.horaSaida}
             />
           </S.Row>
         </S.InputRow>
         <S.ButtonsRow>
-          <Button type="tertiary" col={6} onClick={onClose}>
+          <Button buttonType="tertiary" col={6} onClick={onClose}>
             Cancelar
           </Button>
           <Button col={6} onClick={handleSubmit(onSubmit)}>

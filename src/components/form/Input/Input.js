@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import * as S from './Input.styles';
 
 const Input = React.forwardRef(
-  (
-    { label, col, hasError, marginTop, marginBottom, suffix, ...props },
-    ref,
-  ) => (
+  ({ label, col, error, marginTop, marginBottom, suffix, ...props }, ref) => (
     <S.StyledWrapper
       col={col}
       marginTop={marginTop}
@@ -14,11 +11,12 @@ const Input = React.forwardRef(
     >
       <S.StyledLabel>{label}</S.StyledLabel>
       <S.InputRow>
-        <S.InputContainer hasError={hasError}>
+        <S.InputContainer hasError={error}>
           <S.StyledInput ref={ref} {...props} />
         </S.InputContainer>
         {suffix && <S.Suffix>{suffix}</S.Suffix>}
       </S.InputRow>
+      {error && <S.ErrorText>{error.message}</S.ErrorText>}
     </S.StyledWrapper>
   ),
 );
