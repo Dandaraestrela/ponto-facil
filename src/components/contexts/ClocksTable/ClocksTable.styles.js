@@ -21,7 +21,7 @@ export const TableRow = styled.tr`
 `;
 
 export const TableHeaders = styled.th`
-  ${({ theme: { colors, typography }, employeesTable }) =>
+  ${({ theme: { colors, typography } }) =>
     css`
       padding: 12px;
       font-size: ${typography.fontSize.xm};
@@ -30,7 +30,7 @@ export const TableHeaders = styled.th`
       border-bottom: 1px solid ${colors.neutral.grey200};
       color: ${colors.neutral.grey400};
       :last-of-type {
-        width: ${employeesTable ? '120px' : '180px'};
+        width: 120px;
       }
     `};
 `;
@@ -62,6 +62,12 @@ export const TableText = styled.p`
 
 export const ActionsRow = styled.div`
   display: flex;
+  flex-direction: row;
   gap: 12px;
   align-items: center;
+  svg {
+    path {
+      fill: ${({ theme: { colors } }) => colors.primary.default};
+    }
+  }
 `;

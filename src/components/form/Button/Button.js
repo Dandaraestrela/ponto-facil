@@ -24,7 +24,7 @@ const Button = React.forwardRef(
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   col: PropTypes.number,
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
   onClick: PropTypes.func.isRequired,
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,

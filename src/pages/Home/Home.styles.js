@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   background-color: ${({ theme: { colors } }) => colors.neutral.grey100};
   overflow: auto;
@@ -11,10 +12,9 @@ export const Wrapper = styled.div`
 export const TableWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 44%;
+  width: 96%;
   min-height: 60%;
   margin-top: 16px;
-  margin-left: 60px;
   padding: 16px;
   background-color: ${({ theme: { colors } }) => colors.neutral.white};
   border-radius: 8px;
