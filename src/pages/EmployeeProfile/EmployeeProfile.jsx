@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSingleUser } from 'utils/userGetter';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Navbar, TimeFieldsModal, EmployeesTable } from 'components';
+import { Navbar, TimeFieldsModal, ClocksTable } from 'components';
 
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
 import { ReactComponent as ReturnIcon } from 'assets/icons/return.svg';
@@ -119,7 +119,7 @@ const EmployeeProfile = () => {
                 </S.UserData>
               </S.UserDataContainer>
             </S.UserDataWrapper>
-            <EmployeesTable data={employeeClocks} headers="ClockIn" />
+            <ClocksTable data={employeeClocks} />
           </S.ContentWrapper>
         )}
       </S.Wrapper>
