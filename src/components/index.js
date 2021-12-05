@@ -10,7 +10,8 @@ import ClocksTable from './contexts/ClocksTable/ClocksTable';
 import EmployeesTable from './contexts/EmployeesTable/EmployeesTable';
 import ClockinModal from './contexts/ClockinModal/ClockinModal';
 import WebcamLayout from './contexts/WebcamLayout/WebcamLayout';
-import { UploadButton } from './form/UploadButton/UploadButton';
+import UploadButton from './form/UploadButton/UploadButton';
+import EmployeesPunctuality from './contexts/EmployeesPunctuality/EmployeesPunctuality';
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   ClockinModal,
   WebcamLayout,
   UploadButton,
+  EmployeesPunctuality,
 };

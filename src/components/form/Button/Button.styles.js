@@ -21,6 +21,15 @@ export const ButtonWrapper = styled.button`
     font-size: ${typography.fontSize.lg};
     cursor: pointer;
     background: none;
+
+    &:disabled {
+      background-color: ${colors.neutral.grey300};
+      cursor: not-allowed;
+      :hover {
+        background-color: ${colors.neutral.grey300};
+      }
+    }
+
     ${type === 'primary'
       ? css`
           background-color: ${colors.primary.default};
