@@ -11,9 +11,9 @@ export const PunctualityText = styled.h1`
     font-weight: ${typography.fontWeight.bold};
     font-size: 60px;
     color ${
-      punctuality >= 70
+      punctuality >= 80
         ? colors.status.positive
-        : punctuality <= 40
+        : punctuality < 70
         ? colors.status.negative
         : colors.status.attention
     };

@@ -29,27 +29,26 @@ const employeesPunctuality = () => {
       {Number.isInteger(averagePunctuality) && (
         <>
           <S.Row>
-            {averagePunctuality >= 70 && <Happy />}
-            {averagePunctuality < 70 && averagePunctuality > 40 && <Warning />}
-            {averagePunctuality <= 40 && <Sad />}
+            {averagePunctuality >= 80 && <Happy />}
+            {averagePunctuality < 80 && averagePunctuality >= 70 && <Warning />}
+            {averagePunctuality < 70 && <Sad />}
             <S.PunctualityText punctuality={averagePunctuality}>
               {averagePunctuality}%
             </S.PunctualityText>
           </S.Row>
           <S.Title>
-            {averagePunctuality >= 70 && 'Pontualidade acima da média de 70%'}
-            {averagePunctuality < 70 &&
-              averagePunctuality > 40 &&
-              'Pontualidade abaixo da média de 70%'}
-            {averagePunctuality <= 40 &&
-              'Pontualidade muito abaixo da média de 70%'}
+            {averagePunctuality >= 80 && 'Pontualidade acima da média de 70%'}
+            {averagePunctuality < 80 &&
+              averagePunctuality >= 70 &&
+              'Pontualidade próxima da média de 70%'}
+            {averagePunctuality < 70 && 'Pontualidade abaixo da média de 70%'}
             <br />
             <S.LightTitle>
-              {averagePunctuality >= 70 && 'Funcionários pontuais!'}
-              {averagePunctuality < 70 &&
-                averagePunctuality > 40 &&
+              {averagePunctuality >= 80 && 'Funcionários pontuais!'}
+              {averagePunctuality < 80 &&
+                averagePunctuality >= 70 &&
                 'Alguns atrasos estão acontecendo...'}
-              {averagePunctuality <= 40 &&
+              {averagePunctuality < 70 &&
                 'Sugestão: converse com seus funcionários!'}
             </S.LightTitle>
           </S.Title>

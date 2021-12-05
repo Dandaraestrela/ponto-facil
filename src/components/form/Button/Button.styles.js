@@ -30,7 +30,7 @@ export const ButtonWrapper = styled.button`
       }
     }
 
-    ${type === 'primary'
+    ${buttonType === 'primary'
       ? css`
           background-color: ${colors.primary.default};
           color: ${colors.neutral.white};
