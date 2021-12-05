@@ -1,11 +1,14 @@
-import * as S from './Profile.styles';
-import * as AuthTypes from 'store/types/authTypes';
-import * as EmployeesTypes from 'store/types/employeesTypes';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSingleUser } from 'utils/userGetter';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import * as S from './Profile.styles';
+
+import * as AuthTypes from 'store/types/authTypes';
+import * as EmployeesTypes from 'store/types/employeesTypes';
 
 import {
   Navbar,
@@ -17,9 +20,28 @@ import {
 
 import { ReactComponent as EditIcon } from 'assets/icons/edit.svg';
 
+export const schema = yup
+  .object({
+    novaSenha: yup
+      .string()
+      .min(6, 'A senha não atende ao padrão exigido')
+      .matches(/^.*[A-Z]+.*[0-9]+.*$/, 'A senha não atende ao padrão exigido.')
+      .required('Preencha os dois campos.'),
+    novaSenha2: yup
+      .string()
+      .min(6, 'A senha não atende ao padrão exigido.')
+      .matches(/^.*[A-Z]+.*[0-9]+.*$/, 'A senha não atende ao padrão exigido.')
+      .required('Preencha os dois campos.'),
+  })
+  .required('Preencha os dois campos.');
+
 const Profile = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const { id, flagAdmin } = useSelector((state) => state.auth.user);
   const { employeesList, employeePunctuality } = useSelector(
@@ -136,18 +158,24 @@ const Profile = () => {
               </S.UserDataContainer>
             </S.UserDataWrapper>
             <S.Title>Alterar senha</S.Title>
+            <p>
+              A nova senha deve conter no mínimo 6 caracteres, entre esses
+              caracteres um deles deve ser uma letra maíuscula e um número.
+            </p>
             <S.InputRow>
               <Input
                 label="Nova senha"
                 type="password"
                 col={4}
                 {...register('novaSenha')}
+                error={errors.novaSenha}
               />
               <Input
                 label="Confirmação de nova senha"
                 type="password"
                 col={4}
                 {...register('novaSenha2')}
+                error={errors.novaSenha2}
               />
               <Button col={2} onClick={handleSubmit(onSubmit)}>
                 Salvar senha
