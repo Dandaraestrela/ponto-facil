@@ -17,7 +17,7 @@ const ClockinModal = ({ onClose }) => {
   const [webcamLayout, setWebcamLayout] = useState(false);
 
   const [date, setDate] = useState(new Date());
-  //console.log(moment().locale('pt-br').format('LTS'));
+
   function refreshClock() {
     setDate(new Date());
   }
