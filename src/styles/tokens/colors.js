@@ -7,6 +7,7 @@ export const colors = {
   status: {
     negative: '#F04E4E',
     negativeLight: '#FDE3E3',
+    attention: '#F0894E',
     positive: '#14CC8A',
     positiveLight: '#E3FCF3',
   },

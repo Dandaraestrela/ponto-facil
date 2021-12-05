@@ -17,6 +17,7 @@ const initialState = {
   employeesList: [],
   employeeClocks: [],
   employeePunctuality: 0,
+  employeesPunctualityList: [],
   userEntries: [],
 };
 
@@ -34,6 +35,10 @@ const employeesReducer = (state = initialState, action) => {
       return { ...state, employeePunctuality: action.payload };
     case EmployeesTypes.USER_ENTRIES_TODAY_SUCCESS:
       return { ...state, userEntries: action.payload };
+    case EmployeesTypes.EMPLOYEES_PUNCTUALITY_LIST:
+      return { ...state, employeesPunctualityList: [] };
+    case EmployeesTypes.EMPLOYEES_PUNCTUALITY_LIST_SUCCESS:
+      return { ...state, employeesPunctualityList: action.payload };
     default:
       return state;
   }

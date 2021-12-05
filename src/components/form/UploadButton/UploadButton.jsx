@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { default as RootButton } from '../Button/Button';
 
-export const UploadButton = styled(RootButton)`
+const UploadButton = styled(RootButton)`
   ${({ theme: { colors }, uploaded }) =>
     css`
       ${uploaded
@@ -27,3 +27,5 @@ export const UploadButton = styled(RootButton)`
       }
     `}
 `;
+
+export default UploadButton;

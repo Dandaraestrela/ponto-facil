@@ -68,7 +68,7 @@ const ClockinModal = ({ onClose }) => {
             <Button buttonType="tertiary" col={8} onClick={onClose}>
               Cancelar
             </Button>
-            <Button col={8} onClick={dispatchClockin}>
+            <Button col={8} onClick={dispatchClockin} disabled={!imgSrc}>
               Bater ponto
             </Button>
           </S.ButtonsRow>

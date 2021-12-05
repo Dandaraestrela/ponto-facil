@@ -26,6 +26,10 @@ function* SAGAS() {
       EmployeesTypes.EMPLOYEE_PUNCTUALITY,
       EmployeesSagas.employeePunctuality,
     ),
+    takeLatest(
+      EmployeesTypes.EMPLOYEES_PUNCTUALITY_LIST,
+      EmployeesSagas.employeesPunctualityList,
+    ),
   ]);
 }
 

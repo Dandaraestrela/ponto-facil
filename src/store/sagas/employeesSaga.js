@@ -104,7 +104,7 @@ export function* listEmployeeClock({ payload: { employeeID } }) {
         payload: data,
       });
     } else {
-      toast.error('Não foi possível carregar os dados.');
+      toast.error('Não foram encontrados registros de ponto.');
     }
   } catch (error) {}
 }
@@ -123,6 +123,10 @@ export function* clockIn({ payload: { employeeIMG, onSuccess } }) {
     if (response.data == true) {
       toast.success('Bateu ponto!');
       yield put({ type: EmployeesTypes.USER_ENTRIES_TODAY });
+      yield put({
+        type: EmployeesTypes.EMPLOYEE_CLOCK_LIST,
+        payload: { employeeID: id },
+      });
       onSuccess();
     } else {
       toast.error('Não foi possível bater ponto.');
@@ -159,6 +163,24 @@ export function* UserEntries() {
       });
     } else {
       //toast.warn('Nenhum funcionário deu entrada');
+    }
+  } catch (error) {}
+}
+
+export function* employeesPunctualityList() {
+  try {
+    const { data } = yield call(
+      api.get,
+      `?percentualPontualidade=true&idUsuario=0`,
+    );
+
+    if (data.length) {
+      yield put({
+        type: EmployeesTypes.EMPLOYEES_PUNCTUALITY_LIST_SUCCESS,
+        payload: data,
+      });
+    } else {
+      toast.error('Não foi possível obter pontualidade geral.');
     }
   } catch (error) {}
 }
