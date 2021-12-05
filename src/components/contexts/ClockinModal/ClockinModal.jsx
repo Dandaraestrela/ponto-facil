@@ -51,18 +51,21 @@ const ClockinModal = ({ onClose }) => {
             {date.toLocaleTimeString()}
           </S.Paragraph>
           {imgSrc ? (
-            <UploadButton type="tertiary" uploaded>
+            <UploadButton buttonType="tertiary" uploaded>
               <Check />
               Upload concluído
             </UploadButton>
           ) : (
-            <UploadButton type="tertiary" onClick={() => setWebcamLayout(true)}>
+            <UploadButton
+              buttonType="tertiary"
+              onClick={() => setWebcamLayout(true)}
+            >
               <Camera />
               Fazer Upload
             </UploadButton>
           )}
           <S.ButtonsRow>
-            <Button type="tertiary" col={8} onClick={onClose}>
+            <Button buttonType="tertiary" col={8} onClick={onClose}>
               Cancelar
             </Button>
             <Button col={8} onClick={dispatchClockin}>

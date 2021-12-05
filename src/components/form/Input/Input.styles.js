@@ -69,3 +69,12 @@ export const InputRow = styled.div`
   align-items: center;
   gap: 4px;
 `;
+
+export const ErrorText = styled.p`
+  ${({ theme: { colors, typography } }) => css`
+    font-weight: ${typography.fontWeight.regular};
+    font-size: ${typography.fontSize.md};
+    color: ${colors.status.negative};
+    text-align: right;
+  `};
+`;

@@ -44,7 +44,7 @@ const EmployeesTable = ({ data, headers, handleDelete }) => {
                       <ViewIcon cursor="pointer" />
                     </Link>
                     <Button
-                      type="tertiary"
+                      buttonType="tertiary"
                       col={6}
                       onClick={() => handleDelete(dataGroup)}
                     >

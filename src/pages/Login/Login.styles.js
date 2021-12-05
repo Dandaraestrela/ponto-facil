@@ -23,6 +23,14 @@ export const StyledContent = styled.div`
   z-index: 1;
 `;
 
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+`;
+
 export const StyledBG = styled.div`
   width: 50%;
   background-image: url(${LoginBG});

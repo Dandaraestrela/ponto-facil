@@ -31,7 +31,7 @@ const DeleteUserModal = ({ userData, onClose }) => {
           <u>Esta ação não poderá ser desfeita.</u>
         </S.Paragraph>
         <S.ButtonsRow>
-          <Button type="tertiary" col={8} onClick={onClose}>
+          <Button buttonType="tertiary" col={8} onClick={onClose}>
             Cancelar
           </Button>
           <Button col={8} onClick={dispatchDelete}>

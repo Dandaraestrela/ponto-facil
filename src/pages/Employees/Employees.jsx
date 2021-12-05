@@ -64,7 +64,7 @@ const Employees = () => {
       <S.Wrapper>
         <Navbar />
         <S.ButtonRow>
-          <Button col={2} onClick={() => setCreateUserModal(true)}>
+          <Button col={3} onClick={() => setCreateUserModal(true)}>
             + Novo Funcionário
           </Button>
         </S.ButtonRow>

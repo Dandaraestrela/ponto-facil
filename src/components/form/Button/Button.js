@@ -4,13 +4,13 @@ import * as S from './Button.styles';
 
 const Button = React.forwardRef(
   (
-    { children, col, type, onClick, marginTop, marginBottom, ...props },
+    { children, col, buttonType, onClick, marginTop, marginBottom, ...props },
     ref,
   ) => (
     <S.ButtonWrapper
       ref={ref}
       col={col}
-      type={type}
+      buttonType={buttonType}
       onClick={onClick}
       marginTop={marginTop}
       marginBottom={marginBottom}
@@ -24,7 +24,7 @@ const Button = React.forwardRef(
 Button.propTypes = {
   children: PropTypes.node.isRequired,
   col: PropTypes.number,
-  type: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+  buttonType: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
   onClick: PropTypes.func.isRequired,
   marginTop: PropTypes.number,
   marginBottom: PropTypes.number,
@@ -32,7 +32,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   col: 16,
-  type: 'primary',
+  buttonType: 'primary',
   marginTop: 0,
   marginBottom: 0,
 };
