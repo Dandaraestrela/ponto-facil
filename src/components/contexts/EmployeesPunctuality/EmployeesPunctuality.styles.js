@@ -10,6 +10,7 @@ export const PunctualityText = styled.h1`
   ${({ punctuality, theme: { typography, colors } }) => css`
     font-weight: ${typography.fontWeight.bold};
     font-size: 60px;
+    line-height: 90px;
     color ${
       punctuality >= 80
         ? colors.status.positive
@@ -25,6 +26,8 @@ export const Title = styled.h1`
     font-size: ${typography.fontSize.xl};
     font-weight: ${typography.fontWeight.bold};
     color: ${colors.neutral.grey400};
+
+    line-height: 40px;
   `};
 `;
 
@@ -32,12 +35,14 @@ export const Row = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+  margin: 12px 0;
 `;
 
-export const LightTitle = styled.strong`
+export const LightTitle = styled.p`
   ${({ theme: { typography, colors } }) => css`
     font-size: ${typography.fontSize.xl};
-    font-weight: ${typography.fontWeight.bold};
+    font-weight: ${typography.fontWeight.medium};
     color: ${colors.neutral.grey300};
+    line-height: 40px;
   `};
 `;

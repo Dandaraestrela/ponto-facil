@@ -34,8 +34,6 @@ const WebcamLayout = ({ onClose, setUploadedImage }) => {
       .then((file) => imageCompression(file, options))
       .then(toBase64)
       .then((newPic) => {
-        console.log(newPic);
-        //setImgSrc(newPic);
         setUploadedImage(newPic);
       })
       .catch(function (error) {

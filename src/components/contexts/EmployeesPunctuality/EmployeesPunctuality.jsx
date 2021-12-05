@@ -20,20 +20,21 @@ const employeesPunctuality = () => {
   }, []);
 
   useEffect(() => {
-    setAveragePunctuality(getAveragePunctuality(employeesPunctualityList));
+    if (employeesPunctualityList.length) {
+      setAveragePunctuality(getAveragePunctuality(employeesPunctualityList));
+    }
   }, [employeesPunctualityList]);
 
   return (
     <S.Wrapper>
-      {console.log(averagePunctuality)}
-      {Number.isInteger(averagePunctuality) && (
+      {averagePunctuality && (
         <>
           <S.Row>
             {averagePunctuality >= 80 && <Happy />}
             {averagePunctuality < 80 && averagePunctuality >= 70 && <Warning />}
             {averagePunctuality < 70 && <Sad />}
             <S.PunctualityText punctuality={averagePunctuality}>
-              {averagePunctuality}%
+              {Number(averagePunctuality.toFixed(2))}%
             </S.PunctualityText>
           </S.Row>
           <S.Title>

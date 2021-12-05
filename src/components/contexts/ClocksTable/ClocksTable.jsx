@@ -10,7 +10,6 @@ import ImageModal from '../ImageModal/ImageModal';
 
 const ClocksTable = ({ data }) => {
   const tableHeaders = ClockInHeaders;
-  console.log(data);
   const [imageModal, setImageModal] = useState(false);
   const [selectedImg, setSelectedImg] = useState('');
 

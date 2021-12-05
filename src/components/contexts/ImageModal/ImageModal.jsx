@@ -4,7 +4,6 @@ import * as S from './ImageModal.styles';
 import { ReactComponent as Close } from 'assets/icons/close.svg';
 
 const ImageModal = ({ imgUrl, onClose }) => {
-  console.log(imgUrl);
   return (
     <S.Wrapper>
       <S.Content>
